@@ -1,7 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <layers>
-  <layer
-      name="collective.volto.sitesettings"
-      interface="collective.volto.sitesettings.interfaces.ICollectiveVoltoSitesettingsLayer"
-      />
+  <layer interface="collective.volto.sitesettings.interfaces.ICollectiveVoltoSitesettingsLayer"
+         name="collective.volto.sitesettings"
+  />
 </layers>

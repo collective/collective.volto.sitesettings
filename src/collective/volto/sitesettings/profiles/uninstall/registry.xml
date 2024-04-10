@@ -4,7 +4,7 @@
 >
 
   <records interface="collective.volto.sitesettings.interfaces.ICollectiveVoltoSitesettingsAdditionalSiteSchema"
-           prefix="plone"
+           remove="true"
   />
 
 </registry>
