@@ -1,6 +1,3 @@
-#--- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-#SOME DESCRIPTIVE TITLE.
-#FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -15,43 +12,43 @@ msgstr ""
 "Language-Code: en\n"
 "Language-Name: English\n"
 "Preferred-Encodings: utf-8 latin1\n"
-"Domain: collective.volto.sitesettings\n"
+"Domain: DOMAIN\n"
 
 #: collective/volto/sitesettings/configure.zcml:22
 msgid "Installs the collective.volto.sitesettings add-on."
-msgstr ""
+msgstr "Installa collective.volto.sitesettings"
 
 #: collective/volto/sitesettings/configure.zcml:31
 msgid "Uninstalls the collective.volto.sitesettings add-on."
-msgstr ""
+msgstr "Disinstalla collective.volto.sitesettings"
 
 #: collective/volto/sitesettings/configure.zcml:22
 msgid "collective.volto.sitesettings"
-msgstr ""
+msgstr "collective.volto.sitesettings"
 
 #: collective/volto/sitesettings/configure.zcml:31
 msgid "collective.volto.sitesettings (uninstall)"
-msgstr ""
+msgstr "collective.volto.sitesettings (uninstall)"
 
 #. Default: "Insert a logo that will be used in the site footer."
 #: collective/volto/sitesettings/interfaces.py:43
 msgid "logo_footer_help"
-msgstr ""
+msgstr "Inserisci un logo che verrà utilizzato nel footer del sito."
 
 #. Default: "Footer logo"
 #: collective/volto/sitesettings/interfaces.py:42
 msgid "logo_footer_label"
-msgstr ""
+msgstr "Logo nel footer"
 
 #. Default: "If you want to translate site title for different available language, use this field to set translations. If set, this field overrides the default one."
 #: collective/volto/sitesettings/interfaces.py:23
 msgid "site_localized_help"
-msgstr ""
+msgstr "Utilizza questo campo se vuoi tradurre il titolo del sito nelle varie lingue disponibili. Se impostato, questo campo ha la priorità sul titolo di default."
 
 #. Default: "Translated site title"
 #: collective/volto/sitesettings/interfaces.py:22
 msgid "site_localized_label"
-msgstr ""
+msgstr "Titolo del sito tradotto"
 
 #: collective/volto/sitesettings/interfaces.py:33
 msgid "site_subtitle_help"
@@ -60,4 +57,4 @@ msgstr ""
 #. Default: "Site subtitle"
 #: collective/volto/sitesettings/interfaces.py:32
 msgid "site_subtitle_label"
-msgstr ""
+msgstr "Sottotitolo"

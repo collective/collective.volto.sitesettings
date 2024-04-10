@@ -5,8 +5,8 @@ import subprocess
 
 domain = "collective.volto.sitesettings"
 os.chdir(pkg_resources.resource_filename(domain, ""))
-os.chdir("../../../")
-target_path = "src/collective.volto/sitesettings/"
+os.chdir("../../../../")
+target_path = "src/collective/volto/sitesettings/"
 locale_path = target_path + "locales/"
 i18ndude = "./bin/i18ndude"
 
@@ -34,8 +34,9 @@ def locale_folder_setup():
                 cmd,
                 shell=True,
             )
+            subprocess.call(cmd, shell=True)
 
-    os.chdir("../../../../")
+    os.chdir("../../../../../")
 
 
 def _rebuild():
@@ -46,10 +47,7 @@ def _rebuild():
         target_path=target_path,
         excludes=excludes,
     )
-    subprocess.call(
-        cmd,
-        shell=True,
-    )
+    subprocess.call(cmd, shell=True)
 
 
 def _sync():
@@ -64,6 +62,7 @@ def _sync():
         cmd,
         shell=True,
     )
+    subprocess.call(cmd, shell=True)
 
 
 def update_locale():
