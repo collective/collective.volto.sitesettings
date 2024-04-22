@@ -25,7 +25,7 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
             default="If you want to translate site title for different available language, use this field to set translations. If set, this field overrides the default one.",
         ),
         required=False,
-        default="",
+        default="{}",
     )
 
     site_subtitle = SourceText(
@@ -35,7 +35,7 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
             default="",
         ),
         required=False,
-        default="",
+        default="{}",
     )
 
     site_logo_footer = Bytes(
