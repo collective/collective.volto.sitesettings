@@ -1,6 +1,6 @@
 from collective.volto.sitesettings import _
-from plone.base import PloneMessageFactory as _pmf
 from plone.autoform import directives as form
+from plone.base import PloneMessageFactory as _pmf
 from plone.base.interfaces.controlpanel import ISiteSchema
 from plone.restapi.controlpanels import IControlpanel
 from zope.interface import Interface
