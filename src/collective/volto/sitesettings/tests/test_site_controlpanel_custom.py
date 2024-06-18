@@ -48,8 +48,8 @@ class SiteSettingsTest(unittest.TestCase):
 
     def test_saving_controlpanel_save_registry_data(self):
         self.assertEqual("Plone site", self.site_proxy.site_title)
-        self.assertEqual("", self.site_proxy_additional.site_subtitle)
-        self.assertEqual("", self.site_proxy_additional.site_title_translated)
+        self.assertEqual("{}", self.site_proxy_additional.site_subtitle)
+        self.assertEqual("{}", self.site_proxy_additional.site_title_translated)
 
         self.api_session.patch(
             "/@controlpanels/site",
