@@ -1,4 +1,5 @@
 from collective.volto.sitesettings import _
+from plone.base import PloneMessageFactory as _pmf
 from plone.autoform import directives as form
 from plone.base.interfaces.controlpanel import ISiteSchema
 from plone.restapi.controlpanels import IControlpanel
@@ -7,6 +8,7 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.schema import Bytes
 from zope.schema import Int
 from zope.schema import SourceText
+from zope.schema import Text
 
 
 class ICollectiveVoltoSitesettingsLayer(IDefaultBrowserLayer):
@@ -60,6 +62,14 @@ class ICollectiveVoltoSitesettingsSiteSchema(
 ):
     """"""
 
+    site_title = Text(
+        title=_pmf("Site title"),
+        description=_pmf(
+            "This shows up in the title bar of browsers and in syndication feeds."
+        ),
+        default="Plone site",
+    )
+    form.order_before(site_title="site_logo")
     form.order_after(site_title_translated="site_title")
     form.order_after(site_subtitle="site_title_translated")
     form.order_after(site_logo_footer="site_logo")
