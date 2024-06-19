@@ -20,6 +20,15 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
     Settings interface that add some extra fields to site controlpanel.
     """
 
+    # this override is needed to change the field type of site_title (it was TextLine)
+    site_title = Text(
+        title=_pmf("Site title"),
+        description=_pmf(
+            "This shows up in the title bar of browsers and in syndication feeds."
+        ),
+        default="Plone site",
+    )
+
     site_title_translated = SourceText(
         title=_("site_localized_label", default="Translated site title"),
         description=_(
@@ -62,6 +71,7 @@ class ICollectiveVoltoSitesettingsSiteSchema(
 ):
     """"""
 
+    # without redefining it here, the default one wins in the schema
     site_title = Text(
         title=_pmf("Site title"),
         description=_pmf(
@@ -69,6 +79,7 @@ class ICollectiveVoltoSitesettingsSiteSchema(
         ),
         default="Plone site",
     )
+
     form.order_before(site_title="site_logo")
     form.order_after(site_title_translated="site_title")
     form.order_after(site_subtitle="site_title_translated")

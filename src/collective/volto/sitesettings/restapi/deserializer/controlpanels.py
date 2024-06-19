@@ -77,7 +77,6 @@ class SiteSettingsDeserializeFromJson(ControlpanelDeserializeFromJson):
                 )
                 for error in validator.validate(field_data):
                     errors.append({"error": error, "message": str(error)})
-
             if errors:
                 raise BadRequest(errors)
 
