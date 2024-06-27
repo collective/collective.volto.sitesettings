@@ -78,7 +78,7 @@ class SiteSettingsTest(unittest.TestCase):
         )
         commit()
         resp = self.api_session.get("/@site").json()
-        self.assertEqual(resp["plone.site_title"], "Site custom name")
+        self.assertEqual(resp["plone.site_title"], {"default": "Site custom name"})
 
         # now try to add some localizations
         self.api_session.patch(
@@ -91,7 +91,10 @@ class SiteSettingsTest(unittest.TestCase):
         commit()
 
         resp = self.api_session.get("/@site").json()
-        self.assertEqual(resp["plone.site_title"], "Localized title")
+        self.assertEqual(
+            resp["plone.site_title"],
+            {"default": "Site custom name", "en": "Localized title"},
+        )
 
     def test_endpoint_return_site_subtitle_based_on_language_if_set(self):
         self.api_session.patch(
@@ -102,7 +105,7 @@ class SiteSettingsTest(unittest.TestCase):
         )
         commit()
         resp = self.api_session.get("/@site").json()
-        self.assertEqual(resp["plone.site_subtitle"], "Site subtitle")
+        self.assertEqual(resp["plone.site_subtitle"], {"en": "Site subtitle"})
 
     def test_endpoint_store_logo_dimensions_if_saved(self):
         image_file = os.path.join(os.path.dirname(__file__), "logo.png")

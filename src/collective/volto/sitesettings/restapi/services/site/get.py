@@ -36,18 +36,13 @@ class Site(BaseSite):
             check=False,
         )
         # set title and subtitle based on language, if field is set
-        site_title_translated = self.get_value_from_registry(
-            additional_settings, "site_title_translated"
-        )
-        site_subtitle = self.get_value_from_registry(
-            additional_settings, "site_subtitle"
-        )
+        title = {"default": result["site"]["plone.site_title"]}
+        title.update(self.json_to_dict(additional_settings, "site_title_translated"))
 
-        result["site"]["plone.site_title"] = (
-            self.get_translated_value(site_title_translated)
-            or result["site"]["plone.site_title"]  # noqa
-        )
-        result["site"]["plone.site_subtitle"] = self.get_translated_value(site_subtitle)
+        site_subtitle = self.json_to_dict(additional_settings, "site_subtitle")
+
+        result["site"]["plone.site_title"] = title
+        result["site"]["plone.site_subtitle"] = site_subtitle
 
         # images
         site_url = api.portal.get().absolute_url()
@@ -62,12 +57,12 @@ class Site(BaseSite):
                 result["site"][f"plone.{field}"][
                     "url"
                 ] = f"{site_url}/registry-images/@@images/{field}/{filename}"
-                result["site"][f"plone.{field}"][
-                    "width"
-                ] = self.get_value_from_registry(additional_settings, f"{field}_width")
-                result["site"][f"plone.{field}"][
-                    "height"
-                ] = self.get_value_from_registry(additional_settings, f"{field}_height")
+                result["site"][f"plone.{field}"]["width"] = (
+                    self.get_value_from_registry(additional_settings, f"{field}_width")
+                )
+                result["site"][f"plone.{field}"]["height"] = (
+                    self.get_value_from_registry(additional_settings, f"{field}_height")
+                )
 
         return result
 
@@ -77,19 +72,15 @@ class Site(BaseSite):
         except KeyError:
             return ""
 
-    def get_translated_value(self, field_value):
-        """
-        If set, return the value for current language.
-        """
-        if not field_value:
-            return ""
+    def json_to_dict(self, registry, field):
+        data = self.get_value_from_registry(registry=registry, field=field)
+        if not data:
+            return {}
         try:
-            value = json.loads(field_value)
+            return json.loads(data)
         except (JSONDecodeError, TypeError) as e:
             logger.exception(e)
-            return ""
-        lang = api.portal.get_current_language()
-        return value.get(lang, "")
+            return {}
 
 
 class SiteGet(BaseSiteGet):
