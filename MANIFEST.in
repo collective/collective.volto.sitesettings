@@ -1,7 +1,10 @@
-graft src/collective.volto
+graft src/collective
 graft docs
 include *.rst
-exclude tox.ini
-exclude *.txt
-exclude .gitlab-ci.yml
+include tox.ini
 global-exclude *.pyc
+include *.GPL
+include *.disabled
+include *.txt
+exclude .flake8
+exclude .pre-commit-config.yaml
