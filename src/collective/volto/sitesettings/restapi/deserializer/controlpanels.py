@@ -19,6 +19,7 @@ from zope.interface import implementer
 from zope.schema import getFields
 from zope.schema.interfaces import ValidationError
 
+
 try:
     from plone.base.interfaces.controlpanel import ISiteSchema
 except ImportError:

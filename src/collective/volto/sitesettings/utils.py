@@ -2,6 +2,7 @@ from collective.volto.sitesettings.interfaces import (
     ICollectiveVoltoSitesettingsAdditionalSiteSchema,
 )
 
+
 try:
     from plone.base.interfaces.controlpanel import ISiteSchema
 except ImportError:

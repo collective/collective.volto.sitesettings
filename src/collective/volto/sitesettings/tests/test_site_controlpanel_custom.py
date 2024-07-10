@@ -11,12 +11,12 @@ from plone.restapi.testing import RelativeSession
 from transaction import commit
 from zope.component import getUtility
 
+
 try:
     from plone.base.interfaces.controlpanel import ISiteSchema
 except ImportError:
     # Plone 52
     from Products.CMFPlone.interfaces import ISiteSchema
-
 
 import base64
 import os
