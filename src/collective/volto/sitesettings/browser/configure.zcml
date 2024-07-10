@@ -8,7 +8,7 @@
   <!-- helpers views for @site endpoint -->
   <browser:page
       name="registry-images"
-      for="plone.base.interfaces.siteroot.INavigationRoot"
+      for="plone.app.layout.navigation.interfaces.INavigationRoot"
       class=".site_helpers_views.RegistryImagesView"
       permission="zope.Public"
       />

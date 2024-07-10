@@ -1,7 +1,5 @@
 from collective.volto.sitesettings import _
 from plone.autoform import directives as form
-from plone.base import PloneMessageFactory as _pmf
-from plone.base.interfaces.controlpanel import ISiteSchema
 from plone.restapi.controlpanels import IControlpanel
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
@@ -9,6 +7,14 @@ from zope.schema import Bytes
 from zope.schema import Int
 from zope.schema import SourceText
 from zope.schema import Text
+
+try:
+    from plone.base import PloneMessageFactory as _pmf
+    from plone.base.interfaces.controlpanel import ISiteSchema
+except ImportError:
+    # Plone 52
+    from Products.CMFPlone import PloneMessageFactory as _pmf
+    from Products.CMFPlone.interfaces import ISiteSchema
 
 
 class ICollectiveVoltoSitesettingsLayer(IDefaultBrowserLayer):

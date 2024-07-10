@@ -4,7 +4,6 @@ from collective.volto.sitesettings.interfaces import (
 from collective.volto.sitesettings.interfaces import (
     ICollectiveVoltoSitesettingsSiteControlpanel,
 )
-from plone.base.interfaces.controlpanel import ISiteSchema
 from plone.formwidget.namedfile.converter import b64decode_file
 from plone.namedfile.file import NamedImage
 from plone.restapi.deserializer import json_body
@@ -19,6 +18,12 @@ from zope.component import queryMultiAdapter
 from zope.interface import implementer
 from zope.schema import getFields
 from zope.schema.interfaces import ValidationError
+
+try:
+    from plone.base.interfaces.controlpanel import ISiteSchema
+except ImportError:
+    # Plone 52
+    from Products.CMFPlone.interfaces import ISiteSchema
 
 
 @implementer(IDeserializeFromJson)

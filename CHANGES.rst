@@ -5,7 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add compatibility with Plone52.
+  [cekk]
 
 
 1.0.0 (2024-07-10)
