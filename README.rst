@@ -31,25 +31,20 @@
 collective.volto.sitesettings
 =============================
 
-Plone addon to allow to extend @site controlpanel
+Plone addon that extends @site controlpanel by adding new fields.
+
+This product is the backend part of volto-site-settings_.
+
+.. _volto-site-settings: https://github.com/collective/volto-site-settings
 
 Features
 --------
 
-- Can be bullet points
+- Can set site title in different languages
+- Can set a subtitle in different languages
+- Can add a logo footer
 
-
-Examples
---------
-
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
-
-
-Documentation
--------------
-
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+It overrides `@site` endpoint to expose these new data.
 
 
 Translations
@@ -57,7 +52,7 @@ Translations
 
 This product has been translated into
 
-- Klingon (thanks, K'Plai)
+- Italian
 
 
 Installation
