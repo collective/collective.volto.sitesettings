@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.0.1 (2024-07-10)
 ------------------
 
 - Add compatibility with Plone52.
