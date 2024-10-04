@@ -36,10 +36,21 @@ class Site(BaseSite):
             check=False,
         )
 
-        # set title and subtitle based on language, if field is set
-        result["site"]["plone.site_title"] = self.json_to_dict(
+        site_title_translated = self.json_to_dict(
             additional_settings, "site_title_translated"
         )
+        site_title = result["site"]["plone.site_title"]
+
+        if not site_title_translated:
+            # not yet launched upgrade-step
+            result["site"]["plone.site_title"] = {
+                lang: site_title for lang in result["site"]["plone.available_languages"]
+            }
+        else:
+            # set title and subtitle based on language, if field is set
+            result["site"]["plone.site_title"] = self.json_to_dict(
+                additional_settings, "site_title_translated"
+            )
         result["site"]["plone.site_subtitle"] = self.json_to_dict(
             additional_settings, "site_subtitle"
         )
@@ -57,12 +68,12 @@ class Site(BaseSite):
                 result["site"][f"plone.{field}"][
                     "url"
                 ] = f"{site_url}/registry-images/@@images/{field}/{filename}"
-                result["site"][f"plone.{field}"][
-                    "width"
-                ] = self.get_value_from_registry(additional_settings, f"{field}_width")
-                result["site"][f"plone.{field}"][
-                    "height"
-                ] = self.get_value_from_registry(additional_settings, f"{field}_height")
+                result["site"][f"plone.{field}"]["width"] = (
+                    self.get_value_from_registry(additional_settings, f"{field}_width")
+                )
+                result["site"][f"plone.{field}"]["height"] = (
+                    self.get_value_from_registry(additional_settings, f"{field}_height")
+                )
 
         return result
 

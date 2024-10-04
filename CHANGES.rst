@@ -5,7 +5,8 @@ Changelog
 1.0.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Better handle default value before run 1001 upgrade-step.
+  [cekk]
 
 
 1.0.2 (2024-10-04)
