@@ -31,7 +31,7 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
         title=_("site_localized_label", default="Site title"),
         description=_(
             "site_localized_help",
-            default="If you want to translate site title for different available language, use this field to set translations. If set, this field overrides the default one.",
+            default="Translate site title for different available languages.",
         ),
         required=False,
         default="{}",
