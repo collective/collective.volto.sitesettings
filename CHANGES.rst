@@ -5,7 +5,8 @@ Changelog
 1.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Do not override site_title in schema: we use site_title_translated and then keep it in sync with site_title.
+  [cekk]
 
 
 1.0.1 (2024-07-10)

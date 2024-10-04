@@ -6,15 +6,12 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.schema import Bytes
 from zope.schema import Int
 from zope.schema import SourceText
-from zope.schema import Text
 
 
 try:
-    from plone.base import PloneMessageFactory as _pmf
     from plone.base.interfaces.controlpanel import ISiteSchema
 except ImportError:
     # Plone 52
-    from Products.CMFPlone import PloneMessageFactory as _pmf
     from Products.CMFPlone.interfaces import ISiteSchema
 
 
@@ -27,20 +24,11 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
     Settings interface that add some extra fields to site controlpanel.
     """
 
-    # this override is needed to change the field type of site_title (it was TextLine)
-    site_title = Text(
-        title=_pmf("Site title"),
-        description=_pmf(
-            "This shows up in the title bar of browsers and in syndication feeds."
-        ),
-        default="Plone site",
-    )
-
     site_title_translated = SourceText(
-        title=_("site_localized_label", default="Translated site title"),
+        title=_("site_localized_label", default="Site title"),
         description=_(
             "site_localized_help",
-            default="If you want to translate site title for different available language, use this field to set translations. If set, this field overrides the default one.",
+            default="Translate site title for different available languages.",
         ),
         required=False,
         default="{}",
@@ -78,20 +66,11 @@ class ICollectiveVoltoSitesettingsSiteSchema(
 ):
     """"""
 
-    # without redefining it here, the default one wins in the schema
-    site_title = Text(
-        title=_pmf("Site title"),
-        description=_pmf(
-            "This shows up in the title bar of browsers and in syndication feeds."
-        ),
-        default="Plone site",
-    )
-
-    form.order_before(site_title="site_logo")
-    form.order_after(site_title_translated="site_title")
+    form.order_before(site_title_translated="site_logo")
     form.order_after(site_subtitle="site_title_translated")
     form.order_after(site_logo_footer="site_logo")
 
+    form.omitted("site_title")
     form.omitted("site_logo_width")
     form.omitted("site_logo_height")
     form.omitted("site_favicon_width")

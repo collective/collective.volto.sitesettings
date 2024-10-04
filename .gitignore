@@ -1,6 +1,7 @@
 __pycache__
 .coverage
 .coverage.*
+.python-version
 *.egg-info
 *.log
 *.mo
