@@ -57,12 +57,12 @@ class Site(BaseSite):
                 result["site"][f"plone.{field}"][
                     "url"
                 ] = f"{site_url}/registry-images/@@images/{field}/{filename}"
-                result["site"][f"plone.{field}"]["width"] = (
-                    self.get_value_from_registry(additional_settings, f"{field}_width")
-                )
-                result["site"][f"plone.{field}"]["height"] = (
-                    self.get_value_from_registry(additional_settings, f"{field}_height")
-                )
+                result["site"][f"plone.{field}"][
+                    "width"
+                ] = self.get_value_from_registry(additional_settings, f"{field}_width")
+                result["site"][f"plone.{field}"][
+                    "height"
+                ] = self.get_value_from_registry(additional_settings, f"{field}_height")
 
         return result
 
