@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.3 (unreleased)
+1.0.3 (2024-10-04)
 ------------------
 
 - Better handle default value before run 1001 upgrade-step.
