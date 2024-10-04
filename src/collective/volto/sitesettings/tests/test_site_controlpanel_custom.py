@@ -55,20 +55,21 @@ class SiteSettingsTest(unittest.TestCase):
     def test_saving_controlpanel_save_registry_data(self):
         self.assertEqual("Plone site", self.site_proxy.site_title)
         self.assertEqual("{}", self.site_proxy_additional.site_subtitle)
-        self.assertEqual("{}", self.site_proxy_additional.site_title_translated)
+        self.assertEqual(
+            '{"en": "Plone site"}', self.site_proxy_additional.site_title_translated
+        )
 
         self.api_session.patch(
             "/@controlpanels/site",
             json={
                 "site_title_translated": '{"en": "Localized title"}',
                 "site_subtitle": '{"en": "xxx"}',
-                "site_title": "Site custom name",
             },
         )
         commit()
 
-        # site_title is stored in ISiteSchema
-        self.assertEqual("Site custom name", self.site_proxy.site_title)
+        # site_title is in sync with translated one
+        self.assertEqual("Localized title", self.site_proxy.site_title)
         self.assertEqual(
             '{"en": "Localized title"}',
             self.site_proxy_additional.site_title_translated,
@@ -84,7 +85,7 @@ class SiteSettingsTest(unittest.TestCase):
         )
         commit()
         resp = self.api_session.get("/@site").json()
-        self.assertEqual(resp["plone.site_title"], {"default": "Site custom name"})
+        self.assertEqual(resp["plone.site_title"], {"en": "Plone site"})
 
         # now try to add some localizations
         self.api_session.patch(
@@ -99,7 +100,7 @@ class SiteSettingsTest(unittest.TestCase):
         resp = self.api_session.get("/@site").json()
         self.assertEqual(
             resp["plone.site_title"],
-            {"default": "Site custom name", "en": "Localized title"},
+            {"en": "Localized title"},
         )
 
     def test_endpoint_return_site_subtitle_based_on_language_if_set(self):

@@ -37,4 +37,6 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
+  <include package=".upgrades" />
+
 </configure>

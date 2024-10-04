@@ -1,7 +1,5 @@
 from collective.volto.sitesettings.interfaces import (
     ICollectiveVoltoSitesettingsAdditionalSiteSchema,
-)
-from collective.volto.sitesettings.interfaces import (
     ICollectiveVoltoSitesettingsSiteControlpanel,
 )
 from plone.formwidget.namedfile.converter import b64decode_file
@@ -18,13 +16,15 @@ from zope.component import queryMultiAdapter
 from zope.interface import implementer
 from zope.schema import getFields
 from zope.schema.interfaces import ValidationError
-
+from plone import api
 
 try:
     from plone.base.interfaces.controlpanel import ISiteSchema
 except ImportError:
     # Plone 52
     from Products.CMFPlone.interfaces import ISiteSchema
+
+import json
 
 
 @implementer(IDeserializeFromJson)
@@ -37,6 +37,7 @@ class SiteSettingsDeserializeFromJson(ControlpanelDeserializeFromJson):
         not compromise other functionalities.
         """
         data = json_body(self.controlpanel.request)
+
         for schema_interface in [
             ISiteSchema,
             ICollectiveVoltoSitesettingsAdditionalSiteSchema,
@@ -86,7 +87,27 @@ class SiteSettingsDeserializeFromJson(ControlpanelDeserializeFromJson):
             if errors:
                 raise BadRequest(errors)
 
-        # set width and height for logo and favicon
+        self.align_site_title(data=data)
+        self.set_logo_and_favicon_sizes(data=data)
+
+    def align_site_title(self, data):
+        """align site_title with custom one"""
+        site_title_translated = data.get("site_title_translated", "")
+
+        if site_title_translated:
+            site_title_translated = json.loads(site_title_translated)
+        else:
+            site_title_translated = {}
+
+        lang = api.portal.get_default_language()
+        new_site_title = site_title_translated.get(lang, "")
+
+        if new_site_title:
+            proxy = self.registry.forInterface(ISiteSchema, prefix=self.schema_prefix)
+            setattr(proxy, "site_title", new_site_title.replace("\n", " "))
+
+    def set_logo_and_favicon_sizes(self, data):
+        """set width and height for logo and favicon"""
         proxy = self.registry.forInterface(
             ICollectiveVoltoSitesettingsAdditionalSiteSchema,
             prefix=self.schema_prefix,
