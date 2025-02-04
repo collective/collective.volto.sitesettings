@@ -5,7 +5,8 @@ Changelog
 1.0.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add absolute_url method in registry-images view for compatibility with plone.namedfile >= 6.4.0.
+  [cekk]
 
 
 1.0.3 (2024-10-04)

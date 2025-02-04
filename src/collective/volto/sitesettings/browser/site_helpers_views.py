@@ -18,6 +18,12 @@ class RegistryImagesView(BrowserView):
     def __call__(self):
         return
 
+    def absolute_url(self):
+        """
+        Needed for plone.namedfile >= 6.4.0 with canonical header
+        """
+        return f"{self.context.absolute_url()}/{self.__name__}"
+
 
 @implementer(IPublishTraverse)
 class ImagesView(Download):
