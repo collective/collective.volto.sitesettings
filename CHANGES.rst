@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.4 (unreleased)
+1.0.4 (2025-02-04)
 ------------------
 
 - Add absolute_url method in registry-images view for compatibility with plone.namedfile >= 6.4.0.
