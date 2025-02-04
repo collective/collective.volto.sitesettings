@@ -18,7 +18,7 @@
       class=".site_helpers_views.ImagesView"
       permission="zope.Public"
       />
-    <browser:page
+  <browser:page
       name="download"
       for="collective.volto.sitesettings.interfaces.IRegistryImagesView"
       class=".site_helpers_views.ImagesView"
