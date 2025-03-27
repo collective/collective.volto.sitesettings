@@ -6,7 +6,7 @@ from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 from zope.schema import Bytes
 from zope.schema import Int
 from zope.schema import SourceText
-
+from zope.schema import Bool
 
 try:
     from plone.base.interfaces.controlpanel import ISiteSchema
@@ -32,6 +32,16 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
         ),
         required=False,
         default="{}",
+    )
+
+    hide_title = Bool(
+        title=_("hide_title_label", default="Hide title"),
+        description=_(
+            "hide_title_help",
+            default="Hide the title in the site header.",
+        ),
+        required=False,
+        default=False,
     )
 
     site_subtitle = SourceText(
@@ -67,7 +77,8 @@ class ICollectiveVoltoSitesettingsSiteSchema(
     """"""
 
     form.order_before(site_title_translated="site_logo")
-    form.order_after(site_subtitle="site_title_translated")
+    form.order_after(hide_title="site_title_translated")
+    form.order_after(site_subtitle="hide_title")
     form.order_after(site_logo_footer="site_logo")
 
     form.omitted("site_title")

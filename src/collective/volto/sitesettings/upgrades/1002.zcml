@@ -1,0 +1,14 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+  xmlns:gs="http://namespaces.zope.org/genericsetup">
+
+  <gs:upgradeSteps source="1001"
+    destination="1002"
+    profile="collective.volto.sitesettings:default">
+
+    <gs:upgradeStep title="Add new field: hide_title"
+      description=""
+      handler=".v1002.upgrade" />
+
+  </gs:upgradeSteps>
+
+</configure>

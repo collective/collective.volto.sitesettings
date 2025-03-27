@@ -35,7 +35,9 @@ class Site(BaseSite):
             prefix="plone",
             check=False,
         )
-
+        result["site"]["plone.hide_title"] = (
+            self.get_value_from_registry(additional_settings, "hide_title") or False
+        )
         site_title_translated = self.json_to_dict(
             additional_settings, "site_title_translated"
         )
@@ -68,12 +70,12 @@ class Site(BaseSite):
                 result["site"][f"plone.{field}"][
                     "url"
                 ] = f"{site_url}/registry-images/@@images/{field}/{filename}"
-                result["site"][f"plone.{field}"][
-                    "width"
-                ] = self.get_value_from_registry(additional_settings, f"{field}_width")
-                result["site"][f"plone.{field}"][
-                    "height"
-                ] = self.get_value_from_registry(additional_settings, f"{field}_height")
+                result["site"][f"plone.{field}"]["width"] = (
+                    self.get_value_from_registry(additional_settings, f"{field}_width")
+                )
+                result["site"][f"plone.{field}"]["height"] = (
+                    self.get_value_from_registry(additional_settings, f"{field}_height")
+                )
 
         return result
 
