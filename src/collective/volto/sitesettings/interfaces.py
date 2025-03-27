@@ -3,10 +3,11 @@ from plone.autoform import directives as form
 from plone.restapi.controlpanels import IControlpanel
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from zope.schema import Bool
 from zope.schema import Bytes
 from zope.schema import Int
 from zope.schema import SourceText
-from zope.schema import Bool
+
 
 try:
     from plone.base.interfaces.controlpanel import ISiteSchema
