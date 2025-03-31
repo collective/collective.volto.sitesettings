@@ -35,16 +35,6 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
         default="{}",
     )
 
-    hide_title = Bool(
-        title=_("hide_title_label", default="Hide title"),
-        description=_(
-            "hide_title_help",
-            default="Hide the title in the site header.",
-        ),
-        required=False,
-        default=False,
-    )
-
     site_subtitle = SourceText(
         title=_("site_subtitle_label", default="Site subtitle"),
         description=_(
@@ -53,6 +43,16 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
         ),
         required=False,
         default="{}",
+    )
+
+    hide_title = Bool(
+        title=_("hide_title_label", default="Hide title and subtitle"),
+        description=_(
+            "hide_title_help",
+            default="Hide title and subtitle in the site header.",
+        ),
+        required=False,
+        default=False,
     )
 
     site_logo_footer = Bytes(
