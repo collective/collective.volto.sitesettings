@@ -16,7 +16,7 @@ long_description = "\n\n".join(
 
 setup(
     name="collective.volto.sitesettings",
-    version="1.0.5",
+    version="1.0.6.dev0",
     description="Plone addon to allow to extend @site controlpanel",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
