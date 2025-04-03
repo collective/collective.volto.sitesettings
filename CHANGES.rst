@@ -5,7 +5,8 @@ Changelog
 1.0.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix fields order in schema.
+  [cekk]
 
 
 1.0.5 (2025-04-03)

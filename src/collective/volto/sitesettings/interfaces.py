@@ -78,8 +78,8 @@ class ICollectiveVoltoSitesettingsSiteSchema(
     """"""
 
     form.order_before(site_title_translated="site_logo")
-    form.order_after(hide_title="site_title_translated")
-    form.order_after(site_subtitle="hide_title")
+    form.order_after(site_subtitle="site_title_translated")
+    form.order_after(hide_title="site_subtitle")
     form.order_after(site_logo_footer="site_logo")
 
     form.omitted("site_title")
