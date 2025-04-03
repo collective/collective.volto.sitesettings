@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.6 (unreleased)
+1.0.6 (2025-04-03)
 ------------------
 
 - Fix fields order in schema.
