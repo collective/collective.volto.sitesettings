@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2024-10-04 10:25+0000\n"
+"POT-Creation-Date: 2025-03-27 09:19+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,31 +30,41 @@ msgstr "collective.volto.sitesettings"
 msgid "collective.volto.sitesettings (uninstall)"
 msgstr "collective.volto.sitesettings (uninstall)"
 
+#. Default: "Hide the title in the site header."
+#: collective/volto/sitesettings/interfaces.py:39
+msgid "hide_title_help"
+msgstr "Nascondi il titolo del sito in testata."
+
+#. Default: "Hide title"
+#: collective/volto/sitesettings/interfaces.py:38
+msgid "hide_title_label"
+msgstr "Nascondi il titolo"
+
 #. Default: "Insert a logo that will be used in the site footer."
-#: collective/volto/sitesettings/interfaces.py:52
+#: collective/volto/sitesettings/interfaces.py:59
 msgid "logo_footer_help"
 msgstr "Inserisci un logo che verrà utilizzato nel footer del sito."
 
 #. Default: "Footer logo"
-#: collective/volto/sitesettings/interfaces.py:51
+#: collective/volto/sitesettings/interfaces.py:58
 msgid "logo_footer_label"
 msgstr "Logo nel footer"
 
 #. Default: "Translate site title for different available languages."
-#: collective/volto/sitesettings/interfaces.py:32
+#: collective/volto/sitesettings/interfaces.py:29
 msgid "site_localized_help"
 msgstr "Imposta il titolo del sito nelle varie lingue disponibili."
 
 #. Default: "Site title"
-#: collective/volto/sitesettings/interfaces.py:31
+#: collective/volto/sitesettings/interfaces.py:28
 msgid "site_localized_label"
 msgstr "Titolo del sito"
 
-#: collective/volto/sitesettings/interfaces.py:42
+#: collective/volto/sitesettings/interfaces.py:49
 msgid "site_subtitle_help"
 msgstr ""
 
 #. Default: "Site subtitle"
-#: collective/volto/sitesettings/interfaces.py:41
+#: collective/volto/sitesettings/interfaces.py:48
 msgid "site_subtitle_label"
 msgstr "Sottotitolo"

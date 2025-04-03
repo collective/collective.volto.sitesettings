@@ -3,6 +3,7 @@ from plone.autoform import directives as form
 from plone.restapi.controlpanels import IControlpanel
 from zope.interface import Interface
 from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from zope.schema import Bool
 from zope.schema import Bytes
 from zope.schema import Int
 from zope.schema import SourceText
@@ -44,6 +45,16 @@ class ICollectiveVoltoSitesettingsAdditionalSiteSchema(Interface):
         default="{}",
     )
 
+    hide_title = Bool(
+        title=_("hide_title_label", default="Hide title and subtitle"),
+        description=_(
+            "hide_title_help",
+            default="Hide title and subtitle in the site header.",
+        ),
+        required=False,
+        default=False,
+    )
+
     site_logo_footer = Bytes(
         title=_("logo_footer_label", default="Footer logo"),
         description=_(
@@ -67,7 +78,8 @@ class ICollectiveVoltoSitesettingsSiteSchema(
     """"""
 
     form.order_before(site_title_translated="site_logo")
-    form.order_after(site_subtitle="site_title_translated")
+    form.order_after(hide_title="site_title_translated")
+    form.order_after(site_subtitle="hide_title")
     form.order_after(site_logo_footer="site_logo")
 
     form.omitted("site_title")

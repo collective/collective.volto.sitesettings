@@ -35,7 +35,9 @@ class Site(BaseSite):
             prefix="plone",
             check=False,
         )
-
+        result["site"]["plone.hide_title"] = (
+            self.get_value_from_registry(additional_settings, "hide_title") or False
+        )
         site_title_translated = self.json_to_dict(
             additional_settings, "site_title_translated"
         )

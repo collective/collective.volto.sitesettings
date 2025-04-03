@@ -5,7 +5,8 @@ Changelog
 1.0.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add option to hide title.
+  [cekk]
 
 
 1.0.4 (2025-02-04)
